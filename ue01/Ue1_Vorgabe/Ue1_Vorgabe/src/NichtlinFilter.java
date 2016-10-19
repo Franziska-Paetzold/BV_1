@@ -13,7 +13,7 @@ import java.io.File;
 public class NichtlinFilter extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	private static final String author = "Paetzold";		// TODO: type in your name here
+	private static final String author = "Paetzold";		// TODO:type in your name here
 	private static final String initialFilename = "lena_klein.png";
 	private static final File openPath = new File(".");
 	private static final int borderWidth = 5;
