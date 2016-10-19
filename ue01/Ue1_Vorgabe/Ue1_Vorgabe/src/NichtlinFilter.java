@@ -243,6 +243,8 @@ public class NichtlinFilter extends JPanel {
 		
 	}
 	
+	//Grauwerte
+	
 	private void makeGray(ImageView imgView) {
 		int pixels[] = imgView.getPixels();
 		
