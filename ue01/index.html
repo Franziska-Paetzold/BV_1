@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>1. Übung - Bildverarbeitung - WS2015/16</title>
+  </head>
+  <body>
+    <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td style="font-weight: bold;"><a href="http://www.htw-berlin.de/">HTW-Berlin</a></td>
+          <td style="font-weight: bold; text-align: center;"><a href="http://imi.htw-berlin.de/"><b></b></a><b><a target="_blank" href="http://imi-bachelor.htw-berlin.de/">Internationaler Studiengang Medieninformatik (IMI-B)</a></b></td>
+          <td style="font-weight: bold; text-align: right;">
+              Bildverarbeitung
+              (WS2016/17)</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;"><a
+              href="http://people.f4.htw-berlin.de/~zhangg/">Prof. Dr.
+              Gefei Zhang</a></td>
+          <td style="font-weight: bold; text-align: center;">&nbsp;</td>
+          <td style="font-weight: bold; text-align: right;">1. Übung</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Nichtlineare Filter</h3>
+    <font size="3">Die in dieser Übung zu erstellende Applikation 
+demonstriert die Funktionsweise verschiedener nichtlinearer Filter. Das 
+Eingangsbild wird zunächst mittels <span style="font-style: italic;">Salt &amp; Pepper</span> Rauschen gestört. Anschließend wird versucht, die Störungen durch geeignete Filter zu entfernen.<br>
+<img src="rauschen.png">
+<img src="gefiltert.png"><br>
+<br>
+    </font><span style="font-style: italic;">Ausgabe der Übung:</span><br>
+    Fr, 14.10.2016<br>
+    <br>
+    <span style="font-style: italic;">Abgabe spätestens am:</span><br>
+    Mo, 24.10.2016 um 09:00 Uhr<br>
+    <h4>Diese Aufgabe kann in Gruppen zu maximal 2 Personen bearbeitet werden.</h4>
+    <h4>Vorbereitungen</h4>
+    <ul>
+      <li><font size="3">Laden Sie sich das Archiv <a
+                href="Ue1_Vorgabe.zip">Ue1_Vorgabe.zip</a> herunter und entpacken Sie es in dem Ordner, den Sie als Workspace von Eclipse verwenden.<br>
+          &nbsp;</font></li>
+      <li>Benennen Sie den entpackten Ordner <i>Ue1_Vorgabe</i> um in <span style="font-style: italic;">Ue1_&lt;Ihr(e) Nachname(n)&gt;</span>. Beispiel: <span style="font-style: italic;">Ue1<font size="3">_Schmidt</font></span><font size="3"> oder <i>Ue1_Schmidt_Schulz</i><br>
+          &nbsp; <br>
+        </font></li>
+      <li><font size="3">Importieren Sie das Projekt in Eclipse: <i>File -&gt; Import... -&gt; General -&gt; Existing Projects into Workspace...</i> Für die <i>root directory</i> wählen Sie den Ordner des Workspaces.<br>
+          &nbsp;<br>
+        </font></li>
+      <li><font size="3"></font><font size="3">Achten Sie darauf, dass das Projekt die Java Runtime 1.7 verwendet. Das Programm sollte nun kompilieren.&nbsp;</font><font size="3"></font></li>
+      <ul>
+        <li>Falls Sie noch Java 1.6 verwenden, müssen Sie alle Stellen <code>JComboBox&lt;String&gt;</code> des Quellcodes <font size="3">durch </font><code>JComboBox</code> ersetzen.<br>
+          &nbsp;<br>
+          <font size="3"></font></li>
+      </ul>
+      <li><font size="3">Wenn Sie das Programm starten, sehen Sie ein GUI mit
+          einigen Schaltflächen und zwei Bildbereichen. Im linken Bild ist
+          bereits </font><a href="lena_klein.png">lena_klein.png</a><font size="3"> geladen, das rechte Bild ist leer.<br>
+          &nbsp;<br>
+        </font></li>
+      <li><font size="3">Verschaffen Sie sich einen groben Überblick 
+darüber, wie diese Applikation programmiert ist. Lokalisieren Sie die 
+mit "TODO" gekennzeichneten Stellen, an denen Sie für die folgende 
+Aufgabenstellung Programmcode erstellen müssen.<br>
+        </font></li>
+    </ul>
+    <h4>Aufgabenstellung</h4>
+    Erstellen Sie eine Java-Anwendung mit folgenden Eigenschaften: <br>
+    <ul>
+      <li>Automatisches Öffnen des Bildes&nbsp;<a
+                href="lena_klein.png">lena_klein.png</a>&nbsp; beim Programmstart (bereits vorgegeben).<br>
+        &nbsp;</li>
+      <li>Manuelles Öffnen anderer Bilder durch einen entsprechenden Button (bereits vorgegeben).<br>
+        &nbsp;</li>
+      <li>Automatisches Konvertieren der geöffneten Bilder in Graustufenbilder.<br>
+        &nbsp;</li>
+      <li>Stören des geladenen Bildes mittels Salt &amp; Pepper Rauschen:<br>
+        &nbsp;</li>
+      <ul>
+        <li>Mit einem Slider soll der prozentuale Anteil der zu verändernden Pixel festgelegt werden. (Bereich: 0% bis 30%)</li>
+        <li>Für die eingestellte Anzahl von Pixel werden durch einen Zufallsgenerator x- und y-Koordinaten bestimmt.&nbsp;</li>
+        <ul>
+          <li><span style="font-style: italic;">Vereinfachung:</span> 
+Falls der Zufallsgenerator einen Punkt erzeugt, den Sie schon verändert 
+haben, so können Sie dies unberücksichtigt lassen, d.h. Sie verändern 
+diesen Punkt dann einfach noch einmal. (Damit haben Sie am Ende ggf. 
+weniger Pixel verändert, als Sie eigentlich wollten.) </li>
+        </ul>
+        <li>Die Hälfte der zufällig gefundenen Pixel setzen Sie schwarz, die andere Hälfte weiß.</li>
+        <li>Zufallszahlen können Sie mit <span style="font-style: italic;">Math.random()</span> erzeugen.<br>
+          &nbsp;</li>
+      </ul>
+      <li>Filtern des gestörten Bildes und Anzeige des Resultats:<br>
+        &nbsp;</li>
+      <ul>
+        <li>Zwischen folgenden Filtern soll man wählen können:</li>
+        <ul>
+          <li>3x3 Minimumsfilter</li>
+          <li>3x3 Maximumsfilter</li>
+          <li>3x3 Box-Filter</li>
+          <li>3x3 Medianfilter</li>
+        </ul>
+        <li>Für die Randbehandlung wählen Sie bitte die Methode "konstant
+          fortsetzen" wie sie unter Punkt (2) auf Folie 14 vom Foliensatz
+          01-Bildmanipulationen-mit-Filtern (im moodle) dargestellt ist.&nbsp;</li>
+      </ul>
+    </ul>
+    <h4>Optionale Erweiterungen</h4>
+    Die folgenden Erweiterungen sind freiwillig. Durch ihre 
+Implementierung lernen Sie noch intensiver, wie man Filter effektiv und 
+übersichtlich implementiert (bitte kein <span style="font-style: italic;">copy &amp; paste</span>). Außerdem kann damit die Wirkungsweise der Filter noch besser veranschaulicht werden.<br>
+    <ul>
+      <li>Erlauben Sie auch Störungen, deren Elemente nicht nur einzelne Pixel, sondern auch Blöcke gleicher Farbe sind:<br>
+        &nbsp;</li>
+      <ul>
+        <li>1x1 Pixel</li>
+        <li>1x2 Pixel</li>
+        <li>2x1 Pixel</li>
+        <li>2x2 Pixel<br>
+          &nbsp;</li>
+      </ul>
+      <li>Machen Sie die Größe der Filter variabel:&nbsp;3x3, 5x5, 7x7, 9x9, usw.<br>
+        &nbsp;</li>
+      <li>Erlauben Sie die Verarbeitung von Farbbildern:<br>
+        &nbsp;</li>
+      <ul>
+        <li>Bei der Berechnung der Störungen setzten Sie die Werte der 
+drei Farbebenen R, G, B zufällig auf 0 oder 255. Sie erhalten damit ein 
+buntes <span style="font-style: italic;">Salt &amp; Pepper</span> Rauschen.</li>
+        <li>Bei der Filterung filtern Sie die drei Farbebenen R, G, B unabhängig voneinander.</li>
+      </ul>
+    </ul>
+    <h4>Hinweise</h4>
+    <ul>
+      <li>Achten Sie bei dieser Übung besser auf einen übersichtlichen 
+Source-Code als auf ein schnell laufendes Programm. (Optimaler Weise ist
+ der Source-Code übersichtlich <span style="font-style: italic;">und</span> das Programm schnell. In der Praxis lässt sich das aber nicht immer umsetzen.)<br>
+        &nbsp;</li>
+      <li>Falls Sie einige der Erweiterungen implementieren möchten, 
+überlegen Sie sich bitte frühzeitig im Software-Design, wie Sie das 
+umsetzen würden.</li>
+    </ul>
+  
+
+</body></html>
